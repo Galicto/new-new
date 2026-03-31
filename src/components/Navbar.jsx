@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Navbar({ theme, toggleTheme }) {
+export default function Navbar({ theme, toggleTheme, onLaunchApp }) {
   return (
     <nav className="navbar" role="navigation" aria-label="Main navigation">
       <div className="nav-inner">
@@ -21,7 +21,9 @@ export default function Navbar({ theme, toggleTheme }) {
           <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
             {theme === 'dark' ? '☀️' : '🌙'}
           </button>
-          <button className="btn-primary">Connect Wallet</button>
+          <button className="btn-primary" onClick={onLaunchApp} id="launch-app-btn">
+            Launch App →
+          </button>
         </div>
       </div>
     </nav>

@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+   ALGOHACK DASHBOARD — PredX-Inspired Styles
+   ======================================== */
+
+/* ---------- Glass Panel ---------- */
+.glass-panel {
+  background: rgba(16, 20, 25, 0.6);
+  backdrop-filter: blur(20px);
+}
+
+/* ---------- Neon Glow ---------- */
+.neon-glow {
+  box-shadow: 0 0 20px rgba(0, 255, 163, 0.15);
+}
+
+.neon-glow-strong {
+  box-shadow: 0 0 30px rgba(0, 255, 163, 0.25);
+}
+
+/* ---------- Pulse Dot ---------- */
+.pulse-dot {
+  animation: pulse-anim 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-anim {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .5; transform: scale(1.2); }
+}
+
+/* ---------- Card Hover Effects ---------- */
+.dashboard-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 255, 163, 0.03) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.dashboard-card:hover::before {
+  opacity: 1;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 255, 163, 0.08);
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar-link {
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.sidebar-link:hover {
+  background: #262a30;
+}
+
+.sidebar-link.active {
+  background: #31353b;
+  color: #00FFA3;
+  border-radius: 9999px;
+}
+
+.sidebar-link.active .material-symbols-outlined {
+  font-variation-settings: 'FILL' 1;
+}
+
+/* ---------- Shine Sweep on header button ---------- */
+.btn-neon {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-neon:hover {
+  box-shadow: 0 0 20px rgba(0, 255, 163, 0.4);
+}
+
+.btn-neon::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: skewX(-20deg);
+  transition: none;
+}
+
+.btn-neon:hover::after {
+  animation: btn-sweep 0.6s ease forwards;
+}
+
+@keyframes btn-sweep {
+  0% { left: -100%; }
+  100% { left: 150%; }
+}
+
+/* ---------- Fade in animations ---------- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fade-in-up 0.5s ease forwards;
+}
+
+.fade-in-delay-1 { animation-delay: 0.1s; }
+.fade-in-delay-2 { animation-delay: 0.2s; }
+.fade-in-delay-3 { animation-delay: 0.3s; }
+.fade-in-delay-4 { animation-delay: 0.4s; }
+.fade-in-delay-5 { animation-delay: 0.5s; }
+.fade-in-delay-6 { animation-delay: 0.6s; }
+
+@keyframes fade-in-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Dark Modal Overrides ---------- */
+.modal-box {
+  background-color: #1c2025 !important;
+  border: 1px solid rgba(58, 74, 63, 0.3);
+  color: #e0e2ea;
+}
+
+.modal-backdrop,
+.modal {
+  background-color: rgba(10, 14, 19, 0.8) !important;
+}
+
+.input, .file-input, .select, .textarea {
+  background-color: #262a30 !important;
+  border-color: #3a4a3f !important;
+  color: #e0e2ea !important;
+}
+
+.input::placeholder, .textarea::placeholder {
+  color: #849588 !important;
+}
+
+.input:focus, .file-input:focus, .select:focus, .textarea:focus {
+  border-color: #00FFA3 !important;
+  box-shadow: 0 0 0 2px rgba(0, 255, 163, 0.1) !important;
+}
+
+/* ---------- Alert overrides ---------- */
+.alert-info {
+  background-color: rgba(0, 255, 163, 0.08) !important;
+  border-color: rgba(0, 255, 163, 0.2) !important;
+  color: #00FFA3 !important;
+}
+
+/* ---------- Divider ---------- */
+.divider {
+  color: #849588 !important;
+}
+
+.divider::before, .divider::after {
+  background-color: #3a4a3f !important;
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #101419;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #31353b;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a4a3f;
+}
+
+/* ---------- Material Symbols ---------- */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}

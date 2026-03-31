@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { HeroNode } from './ThreeElements';
 
-export default function Hero() {
+export default function Hero({ onLaunchApp }) {
   const glowRef = useRef(null);
 
   useEffect(() => {
@@ -28,10 +28,10 @@ export default function Hero() {
           PredX Alpha is the institutional prediction protocol on Algorand.
         </p>
         <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
-          <button className="btn-primary" style={{ padding: '16px 32px', fontSize: '1.1rem' }}>
-            Start Trading
+          <button className="btn-primary" id="start-trading-btn" onClick={onLaunchApp} style={{ padding: '16px 32px', fontSize: '1.1rem' }}>
+            Start Trading →
           </button>
-          <button className="btn-primary" style={{ background: 'transparent', border: '1px solid var(--border)', color: 'var(--text)', boxShadow: 'none' }}>
+          <button className="btn-primary" id="explore-markets-btn" onClick={onLaunchApp} style={{ background: 'transparent', border: '1px solid var(--border)', color: 'var(--text)', boxShadow: 'none' }}>
             Explore Markets
           </button>
         </div>
