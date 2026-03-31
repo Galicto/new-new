@@ -70,17 +70,76 @@ export function YieldToken() {
   );
 }
 
-// 5. Liquidity Torus
-export function LiquidityTorus() {
+// 5. Secure Cube (Smart Contracts)
+export function SecureCube() {
   const ref = useRef();
   useFrame((state, delta) => {
-    ref.current.rotation.x += delta * 0.5;
-    ref.current.rotation.y += delta * 0.3;
+    ref.current.rotation.y += delta * 0.4;
+    ref.current.rotation.x += delta * 0.2;
   });
   return (
     <mesh ref={ref}>
-      <torusGeometry args={[1, 0.3, 16, 50]} />
-      <meshStandardMaterial color="#06B6D4" wireframe />
+      <boxGeometry args={[1.2, 1.2, 1.2]} />
+      <meshStandardMaterial color="#8B5CF6" roughness={0.2} metalness={0.6} wireframe />
+    </mesh>
+  );
+}
+
+// 6. Wallet Box (Pera Wallet Integration)
+export function WalletBox() {
+  const ref = useRef();
+  useFrame((state, delta) => {
+    ref.current.rotation.y += delta * 0.3;
+    ref.current.position.y = Math.sin(state.clock.elapsedTime * 2) * 0.1;
+  });
+  return (
+    <Float speed={2} rotationIntensity={0.2} floatIntensity={1}>
+      <mesh ref={ref}>
+        <boxGeometry args={[1.4, 0.8, 0.2]} />
+        <meshStandardMaterial color="#10B981" roughness={0.3} metalness={0.5} />
+      </mesh>
+    </Float>
+  );
+}
+
+// 7. Chart Bars (Market Screener)
+export function ChartBars() {
+  const groupRef = useRef();
+  useFrame((state, delta) => {
+    groupRef.current.rotation.y += delta * 0.5;
+  });
+  return (
+    <group ref={groupRef} position={[0, -0.5, 0]}>
+      <mesh position={[-0.6, 0.4, 0]}>
+        <boxGeometry args={[0.3, 0.8, 0.3]} />
+        <meshStandardMaterial color="#F43F5E" />
+      </mesh>
+      <mesh position={[0, 0.6, 0]}>
+        <boxGeometry args={[0.3, 1.2, 0.3]} />
+        <meshStandardMaterial color="#3B82F6" />
+      </mesh>
+      <mesh position={[0.6, 0.8, 0]}>
+        <boxGeometry args={[0.3, 1.6, 0.3]} />
+        <meshStandardMaterial color="#10B981" />
+      </mesh>
+    </group>
+  );
+}
+
+// 8. AI Brain 
+export function AiBrain() {
+  const meshRef = useRef();
+  useFrame((state, delta) => {
+    meshRef.current.rotation.x += delta * 0.4;
+    meshRef.current.rotation.y += delta * 0.4;
+    meshRef.current.scale.x = 1 + Math.sin(state.clock.elapsedTime * 3) * 0.05;
+    meshRef.current.scale.y = 1 + Math.sin(state.clock.elapsedTime * 3) * 0.05;
+    meshRef.current.scale.z = 1 + Math.sin(state.clock.elapsedTime * 3) * 0.05;
+  });
+  return (
+    <mesh ref={meshRef}>
+      <dodecahedronGeometry args={[0.8, 0]} />
+      <meshStandardMaterial color="#A855F7" wireframe />
     </mesh>
   );
 }

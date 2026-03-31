@@ -1,11 +1,29 @@
 import React from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OracleSphere, YieldToken, LiquidityTorus } from './ThreeElements';
+import { OracleSphere, YieldToken, SecureCube, WalletBox, ChartBars, AiBrain } from './ThreeElements';
 
 const FEATURE_DATA = [
   {
-    title: '100% On-Chain Execution',
-    description: 'Zero counterparty risk. Fully collateralized via smart contracts.',
+    title: 'Trustless Smart Contracts',
+    description: 'Bets locked on-chain. Zero middlemen. Automatic, verifiable settlement.',
+    icon: (
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" style={{width: 18, height: 18}}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+      </svg>
+    )
+  },
+  {
+    title: 'Pera Wallet Integration',
+    description: 'Sign directly from phone. Private keys never leave your device.',
+    icon: (
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" style={{width: 18, height: 18}}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+      </svg>
+    )
+  },
+  {
+    title: 'Real ALGO Staking',
+    description: 'Stake testnet ALGO. Winnings calculated proportionally and paid instantly.',
     icon: (
       <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" style={{width: 18, height: 18}}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -13,47 +31,29 @@ const FEATURE_DATA = [
     )
   },
   {
-    title: 'Sub-Second Finality',
-    description: 'Instant settlement natively powered by Algorand’s PPoS consensus.',
+    title: 'Multi-Source Oracles',
+    description: 'Live BTC & ALGO feeds. Real-world resolution via decentralized data.',
     icon: (
       <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" style={{width: 18, height: 18}}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
       </svg>
     )
   },
   {
-    title: 'Deep Liquidity pools',
-    description: 'Automated Market Maker (AMM) integrated. Zero slippage.',
+    title: 'Live Market Screener',
+    description: 'Real-time YES/NO probabilities. Volume, sentiment, and AI confidence scores.',
     icon: (
       <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" style={{width: 18, height: 18}}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
       </svg>
     )
   },
   {
-    title: 'Oracle Precision',
-    description: 'Verified decentralized data feeds. Absolute outcome accuracy.',
+    title: 'AI-Powered Analysis',
+    description: 'Sentiment scoring and confidence ratings. Evaluate probability with AI edge.',
     icon: (
       <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" style={{width: 18, height: 18}}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    )
-  },
-  {
-    title: 'Permissionless Trading',
-    description: 'No KYC, no regional blocks. Trade on geopolitical or financial events globally.',
-    icon: (
-      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" style={{width: 18, height: 18}}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4" />
-      </svg>
-    )
-  },
-  {
-    title: 'Dynamic Yield Farming',
-    description: 'Stake tokens. Earn platform fees. Govern the ecosystem natively.',
-    icon: (
-      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" style={{width: 18, height: 18}}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
       </svg>
     )
   }
@@ -69,16 +69,25 @@ export default function Features() {
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                 <div className="feat-icon-sm">{feature.icon}</div>
                 {/* Render 3D component conditionally based on title */}
-                {feature.title === 'Oracle Precision' && (
+                {feature.title === 'Trustless Smart Contracts' && (
                   <div style={{ width: 60, height: 60, marginTop: -10, marginRight: -10 }}>
                     <Canvas camera={{ position: [0, 0, 3] }}>
                       <ambientLight intensity={1} />
                       <pointLight position={[10, 10, 10]} intensity={2} />
-                      <OracleSphere />
+                      <SecureCube />
                     </Canvas>
                   </div>
                 )}
-                {feature.title === 'Dynamic Yield Farming' && (
+                {feature.title === 'Pera Wallet Integration' && (
+                  <div style={{ width: 60, height: 60, marginTop: -10, marginRight: -10 }}>
+                    <Canvas camera={{ position: [0, 0, 3] }}>
+                      <ambientLight intensity={1} />
+                      <pointLight position={[10, 10, 10]} intensity={2} />
+                      <WalletBox />
+                    </Canvas>
+                  </div>
+                )}
+                {feature.title === 'Real ALGO Staking' && (
                   <div style={{ width: 60, height: 60, marginTop: -10, marginRight: -10 }}>
                     <Canvas camera={{ position: [0, 0, 3] }}>
                       <ambientLight intensity={1} />
@@ -87,12 +96,30 @@ export default function Features() {
                     </Canvas>
                   </div>
                 )}
-                {feature.title === 'Deep Liquidity pools' && (
+                {feature.title === 'Multi-Source Oracles' && (
                   <div style={{ width: 60, height: 60, marginTop: -10, marginRight: -10 }}>
                     <Canvas camera={{ position: [0, 0, 3] }}>
                       <ambientLight intensity={1} />
                       <pointLight position={[10, 10, 10]} intensity={2} />
-                      <LiquidityTorus />
+                      <OracleSphere />
+                    </Canvas>
+                  </div>
+                )}
+                {feature.title === 'Live Market Screener' && (
+                  <div style={{ width: 60, height: 60, marginTop: -10, marginRight: -10 }}>
+                    <Canvas camera={{ position: [0, 0, 3] }}>
+                      <ambientLight intensity={1} />
+                      <pointLight position={[10, 10, 10]} intensity={2} />
+                      <ChartBars />
+                    </Canvas>
+                  </div>
+                )}
+                {feature.title === 'AI-Powered Analysis' && (
+                  <div style={{ width: 60, height: 60, marginTop: -10, marginRight: -10 }}>
+                    <Canvas camera={{ position: [0, 0, 3] }}>
+                      <ambientLight intensity={1} />
+                      <pointLight position={[10, 10, 10]} intensity={2} />
+                      <AiBrain />
                     </Canvas>
                   </div>
                 )}
