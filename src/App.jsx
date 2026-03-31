@@ -3,6 +3,8 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Features from './components/Features';
 import Footer from './components/Footer';
+import { Canvas } from '@react-three/fiber';
+import { ParticleBackground } from './components/ThreeElements';
 import './index.css';
 
 function App() {
@@ -29,6 +31,11 @@ function App() {
 
   return (
     <div className="wrapper">
+      <div className="canvas-bg">
+        <Canvas camera={{ position: [0, 0, 1] }}>
+          <ParticleBackground />
+        </Canvas>
+      </div>
       <Navbar theme={theme} toggleTheme={toggleTheme} />
       <Hero />
       <Features />
