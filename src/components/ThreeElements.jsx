@@ -143,3 +143,49 @@ export function AiBrain() {
     </mesh>
   );
 }
+
+// 9. Algo Stake
+export function AlgoStake() {
+  const ref = useRef();
+  useFrame((state, delta) => {
+    ref.current.rotation.y += delta * 0.5;
+    ref.current.rotation.x += delta * 0.2;
+  });
+  return (
+    <Float speed={3} rotationIntensity={0.5} floatIntensity={1}>
+      <group ref={ref}>
+        <mesh>
+          <octahedronGeometry args={[0.8, 0]} />
+          <meshStandardMaterial color="#00FFA3" metalness={0.8} roughness={0.1} />
+        </mesh>
+        <mesh>
+          <torusGeometry args={[1.3, 0.03, 16, 50]} />
+          <meshStandardMaterial color="#EAB308" wireframe />
+        </mesh>
+      </group>
+    </Float>
+  );
+}
+
+// 10. Oracle Network
+export function OracleNetwork() {
+  const ref = useRef();
+  useFrame((state, delta) => {
+    ref.current.rotation.y += delta * 0.2;
+    ref.current.rotation.x -= delta * 0.3;
+  });
+  return (
+    <Float speed={2} rotationIntensity={1} floatIntensity={1}>
+      <group ref={ref}>
+        <mesh>
+          <sphereGeometry args={[0.6, 32, 32]} />
+          <meshStandardMaterial color="#2563EB" metalness={0.7} roughness={0.2} />
+        </mesh>
+        <mesh>
+          <icosahedronGeometry args={[1.2, 1]} />
+          <meshStandardMaterial color="#3B82F6" wireframe opacity={0.5} transparent />
+        </mesh>
+      </group>
+    </Float>
+  );
+}

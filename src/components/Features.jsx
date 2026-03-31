@@ -1,6 +1,6 @@
 import React from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OracleSphere, YieldToken, SecureCube, WalletBox, ChartBars, AiBrain } from './ThreeElements';
+import { SecureCube, WalletBox, ChartBars, AiBrain, AlgoStake, OracleNetwork } from './ThreeElements';
 
 const FEATURE_DATA = [
   {
@@ -70,7 +70,7 @@ export default function Features() {
                 <div className="feat-icon-sm">{feature.icon}</div>
                 {/* Render 3D component conditionally based on title */}
                 {feature.title === 'Trustless Smart Contracts' && (
-                  <div style={{ width: 60, height: 60, marginTop: -10, marginRight: -10 }}>
+                  <div style={{ width: 100, height: 100, marginTop: -20, marginRight: -20 }}>
                     <Canvas camera={{ position: [0, 0, 3] }}>
                       <ambientLight intensity={1} />
                       <pointLight position={[10, 10, 10]} intensity={2} />
@@ -79,7 +79,7 @@ export default function Features() {
                   </div>
                 )}
                 {feature.title === 'Pera Wallet Integration' && (
-                  <div style={{ width: 60, height: 60, marginTop: -10, marginRight: -10 }}>
+                  <div style={{ width: 100, height: 100, marginTop: -20, marginRight: -20 }}>
                     <Canvas camera={{ position: [0, 0, 3] }}>
                       <ambientLight intensity={1} />
                       <pointLight position={[10, 10, 10]} intensity={2} />
@@ -88,25 +88,25 @@ export default function Features() {
                   </div>
                 )}
                 {feature.title === 'Real ALGO Staking' && (
-                  <div style={{ width: 60, height: 60, marginTop: -10, marginRight: -10 }}>
+                  <div style={{ width: 100, height: 100, marginTop: -20, marginRight: -20 }}>
                     <Canvas camera={{ position: [0, 0, 3] }}>
                       <ambientLight intensity={1} />
                       <pointLight position={[10, 10, 10]} intensity={2} />
-                      <YieldToken />
+                      <AlgoStake />
                     </Canvas>
                   </div>
                 )}
                 {feature.title === 'Multi-Source Oracles' && (
-                  <div style={{ width: 60, height: 60, marginTop: -10, marginRight: -10 }}>
+                  <div style={{ width: 100, height: 100, marginTop: -20, marginRight: -20 }}>
                     <Canvas camera={{ position: [0, 0, 3] }}>
                       <ambientLight intensity={1} />
                       <pointLight position={[10, 10, 10]} intensity={2} />
-                      <OracleSphere />
+                      <OracleNetwork />
                     </Canvas>
                   </div>
                 )}
                 {feature.title === 'Live Market Screener' && (
-                  <div style={{ width: 60, height: 60, marginTop: -10, marginRight: -10 }}>
+                  <div style={{ width: 100, height: 100, marginTop: -20, marginRight: -20 }}>
                     <Canvas camera={{ position: [0, 0, 3] }}>
                       <ambientLight intensity={1} />
                       <pointLight position={[10, 10, 10]} intensity={2} />
@@ -115,7 +115,7 @@ export default function Features() {
                   </div>
                 )}
                 {feature.title === 'AI-Powered Analysis' && (
-                  <div style={{ width: 60, height: 60, marginTop: -10, marginRight: -10 }}>
+                  <div style={{ width: 100, height: 100, marginTop: -20, marginRight: -20 }}>
                     <Canvas camera={{ position: [0, 0, 3] }}>
                       <ambientLight intensity={1} />
                       <pointLight position={[10, 10, 10]} intensity={2} />
